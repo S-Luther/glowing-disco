@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://dahrgvoyf5f2m"]
 
-[ext_resource type="Texture2D" uid="uid://db48t1aggv4dt" path="res://icon.svg" id="1_p0vlq"]
 [ext_resource type="Script" uid="uid://cbwexlaoijkvj" path="res://Scripts/player.gd" id="1_v6fml"]
+[ext_resource type="Texture2D" uid="uid://dgbyd0tdkdt0y" path="res://assets/MinifolksForestAnimals/Outline/MiniBear.png" id="2_v6fml"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v6fml"]
 size = Vector2(131, 128)
@@ -23,6 +23,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id="Animation_3li8b"]
+length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -33,24 +34,13 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [11]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:frame_coords")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [Vector2i(1, 2)]
+"values": [1]
 }
 
 [sub_resource type="Animation" id="Animation_mdl7e"]
 resource_name = "run"
 length = 0.6
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -58,7 +48,7 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.30487, 0.4036, 0.503416),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.400346, 0.501246),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [10, 11, 12, 13, 14, 15]
@@ -66,18 +56,18 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_qu4a1"]
 resource_name = "jump"
-length = 0.4
+length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2018),
+"times": PackedFloat32Array(0, 0.166667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [Vector2i(0, 2), Vector2i(1, 2)]
+"values": [20, 21]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_mdl7e"]
@@ -92,13 +82,17 @@ _data = {
 scale = Vector2(0.5, 0.5)
 script = ExtResource("1_v6fml")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-4, 4)
-texture = ExtResource("1_p0vlq")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1.5, 4)
 shape = SubResource("RectangleShape2D_v6fml")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(20, -86)
+scale = Vector2(10, 10)
+texture = ExtResource("2_v6fml")
+hframes = 10
+vframes = 8
+frame = 1
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
