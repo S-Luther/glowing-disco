@@ -39,3 +39,12 @@ func _physics_process(delta: float) -> void:
 
 		
 	move_and_slide();
+
+func _on_exit_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
+	if body == self:
+		get_tree().quit()
+
+
+func _on_area_2d_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
+	if body == self:
+		print("wet")

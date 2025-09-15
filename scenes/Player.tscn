@@ -3,8 +3,24 @@
 [ext_resource type="Script" uid="uid://cbwexlaoijkvj" path="res://Scripts/player.gd" id="1_v6fml"]
 [ext_resource type="Texture2D" uid="uid://dgbyd0tdkdt0y" path="res://assets/MinifolksForestAnimals/Outline/MiniBear.png" id="2_v6fml"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_v6fml"]
-size = Vector2(131, 128)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v6fml"]
+radius = 53.5
+height = 172.0
+
+[sub_resource type="Animation" id="Animation_3li8b"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
 
 [sub_resource type="Animation" id="Animation_v6fml"]
 resource_name = "idle"
@@ -22,8 +38,9 @@ tracks/0/keys = {
 "values": [0, 1, 2, 3]
 }
 
-[sub_resource type="Animation" id="Animation_3li8b"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_qu4a1"]
+resource_name = "jump"
+length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -31,10 +48,10 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.166667),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [1]
+"values": [20, 21]
 }
 
 [sub_resource type="Animation" id="Animation_mdl7e"]
@@ -54,22 +71,6 @@ tracks/0/keys = {
 "values": [10, 11, 12, 13, 14, 15]
 }
 
-[sub_resource type="Animation" id="Animation_qu4a1"]
-resource_name = "jump"
-length = 0.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.166667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [20, 21]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_mdl7e"]
 _data = {
 &"RESET": SubResource("Animation_3li8b"),
@@ -84,7 +85,8 @@ script = ExtResource("1_v6fml")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1.5, 4)
-shape = SubResource("RectangleShape2D_v6fml")
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_v6fml")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(20, -86)
