@@ -1,10 +1,23 @@
-[gd_scene load_steps=9 format=4 uid="uid://dcuhegn4v7r52"]
+[gd_scene load_steps=10 format=4 uid="uid://dcuhegn4v7r52"]
 
 [ext_resource type="Texture2D" uid="uid://db48t1aggv4dt" path="res://icon.svg" id="1_6e84v"]
 [ext_resource type="PackedScene" uid="uid://dahrgvoyf5f2m" path="res://scenes/Player.tscn" id="2_4dvvg"]
 [ext_resource type="PackedScene" uid="uid://bqtbwox8diswx" path="res://scenes/Bullet.tscn" id="3_rnjyy"]
 [ext_resource type="PackedScene" uid="uid://1wbnu64o0d" path="res://scenes/bird.tscn" id="4_4vge2"]
 [ext_resource type="TileSet" uid="uid://7ti63oohnbxb" path="res://scenes/platform.tres" id="5_04qyp"]
+
+[sub_resource type="GDScript" id="GDScript_qifjx"]
+script/source = "extends StaticBody2D
+
+
+func change_scene_to_node(node):
+	var tree = get_tree()
+	var cur_scene = tree.get_current_scene()
+	var nodeInstance = node.instantiate()
+	tree.get_root().add_child(nodeInstance)
+	tree.get_root().remove_child(cur_scene)
+	tree.set_current_scene(nodeInstance)
+"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_04qyp"]
 size = Vector2(129, 114)
@@ -16,6 +29,7 @@ size = Vector2(3192, 1110)
 size = Vector2(61.5, 124)
 
 [node name="Node2D" type="StaticBody2D"]
+script = SubResource("GDScript_qifjx")
 
 [node name="Player" parent="." instance=ExtResource("2_4dvvg")]
 position = Vector2(562, 184)

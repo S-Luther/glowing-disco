@@ -1,11 +1,13 @@
 extends CharacterBody2D
 
-const SPEED = 200.0
+var SPEED = 200.0
 const JUMP_VEL = -600.0
 
 @onready var camera = get_node("Camera2D")
 @onready var sprite = get_node("Sprite2D")
 @onready var animationPlayer = get_node("AnimationPlayer")
+var menu = preload("res://scenes/Menu.tscn")
+
 
 
 func _physics_process(delta: float) -> void:
@@ -42,7 +44,7 @@ func _physics_process(delta: float) -> void:
 
 func _on_exit_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
 	if body == self:
-		get_tree().quit()
+		get_parent().change_scene_to_node(menu)
 
 
 func _on_area_2d_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
