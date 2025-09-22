@@ -2,42 +2,53 @@
 
 [ext_resource type="Script" uid="uid://duo5s3637mwa2" path="res://Scripts/menu.gd" id="1_xdvgc"]
 
-[node name="Menu" type="CenterContainer"]
+[node name="Menu" type="ColorRect"]
+z_index = -1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -5804.0
+offset_top = -3727.0
+offset_right = 3772.0
+offset_bottom = 2337.0
 grow_horizontal = 2
 grow_vertical = 2
+color = Color(0.0823529, 0.113725, 1, 1)
 script = ExtResource("1_xdvgc")
 
-[node name="HBoxContainer" type="VBoxContainer" parent="."]
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 0
+offset_right = 12708.0
+offset_bottom = 8055.0
+
+[node name="HBoxContainer" type="VBoxContainer" parent="CenterContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="HBoxContainer"]
+[node name="Label" type="Label" parent="CenterContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 100
 text = "Menu"
 horizontal_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="Level1" type="Button" parent="HBoxContainer/HBoxContainer"]
+[node name="Level1" type="Button" parent="CenterContainer/HBoxContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "Level 1"
 
-[node name="Options" type="Button" parent="HBoxContainer/HBoxContainer"]
+[node name="Options" type="Button" parent="CenterContainer/HBoxContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "Options
 "
 
-[node name="Quit" type="Button" parent="HBoxContainer"]
+[node name="Quit" type="Button" parent="CenterContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "Quit"
 
-[connection signal="pressed" from="HBoxContainer/HBoxContainer/Level1" to="." method="_on_level_1_pressed"]
-[connection signal="pressed" from="HBoxContainer/HBoxContainer/Options" to="." method="_on_options_pressed"]
-[connection signal="pressed" from="HBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="CenterContainer/HBoxContainer/HBoxContainer/Level1" to="." method="_on_level_1_pressed"]
+[connection signal="pressed" from="CenterContainer/HBoxContainer/HBoxContainer/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="CenterContainer/HBoxContainer/Quit" to="." method="_on_quit_pressed"]

@@ -1,8 +1,24 @@
-[gd_scene load_steps=6 format=3 uid="uid://1wbnu64o0d"]
+[gd_scene load_steps=7 format=3 uid="uid://1wbnu64o0d"]
 
+[ext_resource type="Script" uid="uid://c3cfcd35833e6" path="res://Scripts/NPC.gd" id="1_3po83"]
 [ext_resource type="Texture2D" uid="uid://bxdsach2ayt7v" path="res://assets/MinifolksForestAnimals/Outline/MiniBird.png" id="1_kqhkv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kqhkv"]
+
+[sub_resource type="Animation" id="Animation_hq4t0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MiniBird:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [5]
+}
 
 [sub_resource type="Animation" id="Animation_3po83"]
 resource_name = "idle"
@@ -20,28 +36,14 @@ tracks/0/keys = {
 "values": [4, 5, 6, 7]
 }
 
-[sub_resource type="Animation" id="Animation_hq4t0"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("MiniBird:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [5]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_twsrt"]
 _data = {
 &"RESET": SubResource("Animation_hq4t0"),
 &"idle": SubResource("Animation_3po83")
 }
 
-[node name="Bird" type="StaticBody2D"]
+[node name="Bird" type="CharacterBody2D"]
+script = ExtResource("1_3po83")
 
 [node name="MiniBird" type="Sprite2D" parent="."]
 position = Vector2(0, -13)

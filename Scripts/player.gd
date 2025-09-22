@@ -9,6 +9,9 @@ const JUMP_VEL = -600.0
 var menu = preload("res://scenes/Menu.tscn")
 
 
+func _ready() -> void:
+	self.add_to_group("Player")
+
 
 func _physics_process(delta: float) -> void:
 	velocity += get_gravity() * delta
@@ -44,7 +47,8 @@ func _physics_process(delta: float) -> void:
 
 func _on_exit_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
 	if body == self:
-		get_parent().change_scene_to_node(menu)
+		get_tree().change_scene_to_file("res://scenes/Menu.tscn")
+
 
 
 func _on_area_2d_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:

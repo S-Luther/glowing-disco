@@ -103,3 +103,5 @@ libraries = {
 &"": SubResource("AnimationLibrary_mdl7e")
 }
 autoplay = "idle"
+
+[node name="Timer" type="Timer" parent="."]
